@@ -1,42 +1,22 @@
-cmake_minimum_required(VERSION 3.20)
-project(PixelEngine C)
+cmake_minimum_required(VERSION 4.2)
+project(System-Design-CPP)
 
-set(CMAKE_C_STANDARD 23)
-set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 20)
 
-# 1. Path to SDL3
-set(SDL3_ROOT "D:/Codex/C/Pixel_Level_Programming/SDL3-devel-3.4.14-mingw/SDL3-3.4.14/x86_64-w64-mingw32")
+# Keeps your main folder clean by putting .exe files in the build folder
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
-# 2. Recursively find all .c files, excluding build directories
-file(GLOB_RECURSE ALL_C_FILES CONFIGURE_DEPENDS
-        "${CMAKE_CURRENT_SOURCE_DIR}/*.c"
-)
-list(FILTER ALL_C_FILES EXCLUDE REGEX "${CMAKE_CURRENT_SOURCE_DIR}/cmake-build-.*")
+# 1. Find all .cpp files in your project directory
+file(GLOB_RECURSE CPP_FILES "*.cpp")
 
-# 3. Create one executable per source file
-foreach(SOURCE_FILE ${ALL_C_FILES})
-    # Get path relative to project root
-    file(RELATIVE_PATH REL_FILE "${CMAKE_CURRENT_SOURCE_DIR}" "${SOURCE_FILE}")
+# 2. FILTER OUT any files that are inside the cmake-build directories
+list(FILTER CPP_FILES EXCLUDE REGEX "cmake-build-")
 
-    # Build a unique target name (e.g., "Pixel_Manipulation_ex01_pixel_manipulation_library")
-    string(REGEX REPLACE "\\.c$" "" TARGET_NAME "${REL_FILE}")
-    string(REGEX REPLACE "[/\\\\]" "_" TARGET_NAME "${TARGET_NAME}")
+# 3. Loop through the safe files and create an executable for each
+foreach(FILE ${CPP_FILES})
+    get_filename_component(TARGET_NAME ${FILE} NAME_WE)
+    add_executable(${TARGET_NAME} ${FILE})
 
-    # Create executable using relative path
-    add_executable(${TARGET_NAME} "${REL_FILE}")
-
-    # FIX: Force include path directly onto the target as a SYSTEM include
-    target_include_directories(${TARGET_NAME} SYSTEM PRIVATE "${SDL3_ROOT}/include")
-    target_link_directories(${TARGET_NAME} PRIVATE "${SDL3_ROOT}/lib")
-
-    # Link SDL3
-    target_link_libraries(${TARGET_NAME} PRIVATE SDL3)
-
-    # Copy SDL3.dll next to executable after build
-    add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${SDL3_ROOT}/bin/SDL3.dll"
-            "$<TARGET_FILE_DIR:${TARGET_NAME}>"
-            COMMENT "Copying SDL3.dll to ${TARGET_NAME} output"
-    )
+    # NEW LINE: Force this specific target to output to the build directory
+    set_target_properties(${TARGET_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
 endforeach()
