@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// Class
 class Car {
 public:
     string brand;
@@ -47,8 +48,9 @@ public:
 
 };
 
+// Main function
 int main() {
-
+    // Object creation
     Car* c = new Car();
 
     c->engine_start();
@@ -56,7 +58,6 @@ int main() {
     c->decelerate();
     c->apply_break();
     c->engine_stop();
-
 
     delete c;
 
