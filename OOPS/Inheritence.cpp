@@ -34,10 +34,10 @@ public:
 
     void decelerate() {
         if (speed == 0) {
-            cout << "Car Decelerate at speed " << speed << endl;
+            cout << "Car Decelerate to speed " << speed << endl;
         }else {
             speed -= 10;
-            cout << "Car Decelerate at speed " << speed << endl;
+            cout << "Car Decelerate to speed " << speed << endl;
         }
     }
 
