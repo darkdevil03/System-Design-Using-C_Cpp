@@ -8,7 +8,6 @@ class AreaOfRectangle {
     int height;
 
     public:
-    int x =10;
     AreaOfRectangle() {
         // Default Area of Rectangle
         width = 2;
@@ -29,10 +28,10 @@ class AreaOfRectangle {
 int main() {
     AreaOfRectangle *rect = new AreaOfRectangle();
 
-    cout << "X : "<< rect->x << endl;
+    // cout << "width : "<< rect->width << endl; // Private members not accessible outside the class
 
     rect->setValues(10, 20);
-    cout << "Area of rectangle : " << rect->getArea() << endl;
+    cout << "Area of rectangle : " << rect->getArea() << "cm^2" << endl;
 
     free(rect);
 
