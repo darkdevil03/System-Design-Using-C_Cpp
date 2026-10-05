@@ -2,6 +2,10 @@
 
 using namespace std;
 
+class car {
+
+};
+
 int main() {
 
 }
