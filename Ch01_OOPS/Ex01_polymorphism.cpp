@@ -18,8 +18,13 @@ public:
         speed = 0;
     }
 
-    virtual void engine_start();
-    virtual void engine_stop();
+    void engine_start() {
+        cout << "[CAR] Car Engine Started!!" << endl;
+    }
+
+    void engine_stop() {
+        cout << "[CAR] Car Engine Stopped!!" << endl;
+    }
     virtual void accelerate();
     virtual void decelerate();
     virtual void apply_break();
@@ -41,12 +46,12 @@ public:
         speed = 0;
     }
 
-    void engine_start() override {
-        cout << "Car Engine Started!!" << endl;
+    void engine_start(){
+        cout << "[MANUAL] Car Engine Started!!" << endl;
     }
 
-    void engine_stop() override {
-        cout << "Car Engine Stopped!!" << endl;
+    void engine_stop(){
+        cout << "[MANUAL] Car Engine Stopped!!" << endl;
     }
 
     void accelerate() override {
