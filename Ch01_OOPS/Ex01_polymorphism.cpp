@@ -93,16 +93,16 @@ public:
         cout << "Car Engine Started!!" << endl;
     }
 
-    void engine_stop() override {
+    void engine_stop() {
         cout << "Car Engine Stopped!!" << endl;
     }
 
-    void accelerate() override {
+    void accelerate() {
         speed += 15;
         cout << "Car Accelerate at speed " << speed << endl;
     }
 
-    void decelerate() override {
+    void decelerate() {
         if (speed == 0) {
             cout << "Car Decelerate to speed " << speed << endl;
         }else {
