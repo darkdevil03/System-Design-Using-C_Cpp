@@ -111,7 +111,7 @@ public:
         }
     }
 
-    void apply_break() override{
+    void apply_break() {
         speed = 0;
         cout << "Car Break at speed " << speed << endl;
     }
