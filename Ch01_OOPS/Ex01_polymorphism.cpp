@@ -1,11 +1,10 @@
 #include <iostream>
-
 using namespace std;
 
 // Parent Class
 class Car {
-public:
 
+    public:
     string brand;
     string model;
     float engine_cc;
@@ -33,7 +32,8 @@ public:
 };
 
 class Manual_Car: public Car {
-public:
+
+    public:
     string brand;
     string model;
     float engine_cc;
@@ -76,7 +76,8 @@ public:
 };
 
 class Electric_Car: public Car {
-public:
+
+    public:
     string brand;
     string model;
     float engine_cc;
