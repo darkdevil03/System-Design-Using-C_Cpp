@@ -20,11 +20,32 @@ public:
         speed = 0;
     }
 
-    virtual void engine_start();
-    virtual void engine_stop();
-    virtual void accelerate();
-    virtual void decelerate();
-    virtual void apply_break();
+    virtual void engine_start() {
+        cout << "[CAR] Engine Started" << endl;
+    }
+
+    virtual void engine_stop() {
+        cout << "[CAR] Engine Stopped" << endl;
+    }
+
+    virtual void accelerate() {
+        speed += 5;
+        cout << "[CAR] Accelerate to speed " << speed << endl;
+    }
+
+    virtual void decelerate() {
+        if (speed == 0) {
+            cout << "[CAR] Already at speed " << speed << endl;
+        } else {
+            speed -= 5;
+            cout << "[CAR] Decelerate to speed " << speed << endl;
+        }
+    }
+
+    virtual void apply_break() {
+        speed = 0;
+        cout << "[CAR] Break at speed " << speed << endl;
+    }
 
     virtual ~Car() = default;
 };
@@ -44,30 +65,30 @@ public:
     }
 
     void engine_start() override {
-        cout << "Car Engine Started!!" << endl;
+        cout << "[MANUAL] Car Engine Started!!" << endl;
     }
 
     void engine_stop() override {
-        cout << "Car Engine Stopped!!" << endl;
+        cout << "[MANUAL] Car Engine Stopped!!" << endl;
     }
 
     void accelerate() override {
         speed += 10;
-        cout << "Car Accelerate at speed " << speed << endl;
+        cout << "[MANUAL] Car Accelerate at speed " << speed << endl;
     }
 
     void decelerate() override {
         if (speed == 0) {
-            cout << "Car Decelerate to speed " << speed << endl;
+            cout << "[MANUAL] Car Decelerate to speed " << speed << endl;
         }else {
             speed -= 10;
-            cout << "Car Decelerate to speed " << speed << endl;
+            cout << "[MANUAL] Car Decelerate to speed " << speed << endl;
         }
     }
 
     void apply_break() override{
         speed = 0;
-        cout << "Car Break at speed " << speed << endl;
+        cout << "[MANUAL] Car Break at speed " << speed << endl;
     }
 
 };
