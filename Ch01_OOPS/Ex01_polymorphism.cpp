@@ -17,16 +17,31 @@ class Car {
         speed = 0;
     }
 
-    void engine_start() {
+    virtual void engine_start() {
         cout << "[CAR] Car Engine Started!!" << endl;
     }
 
-    void engine_stop() {
+    virtual void engine_stop() {
         cout << "[CAR] Car Engine Stopped!!" << endl;
     }
-    virtual void accelerate();
-    virtual void decelerate();
-    virtual void apply_break();
+    virtual void accelerate() {
+        speed += 5;
+        cout << "[CAR] Accelerate to speed " << speed << endl;
+    }
+
+    virtual void decelerate() {
+        if (speed == 0) {
+            cout << "[CAR] Already at speed " << speed << endl;
+        } else {
+            speed -= 5;
+            cout << "[CAR] Decelerate to speed " << speed << endl;
+        }
+    }
+
+    virtual void apply_break() {
+        speed = 0;
+        cout << "[CAR] Break at speed " << speed << endl;
+    }
 
     virtual ~Car() = default;
 };
@@ -46,31 +61,31 @@ class Manual_Car: public Car {
         speed = 0;
     }
 
-    void engine_start(){
+    void engine_start() override {
         cout << "[MANUAL] Car Engine Started!!" << endl;
     }
 
-    void engine_stop(){
+    void engine_stop() override {
         cout << "[MANUAL] Car Engine Stopped!!" << endl;
     }
 
     void accelerate() override {
         speed += 10;
-        cout << "Car Accelerate at speed " << speed << endl;
+        cout << "[MANUAL] Car Accelerate at speed " << speed << endl;
     }
 
     void decelerate() override {
         if (speed == 0) {
-            cout << "Car Decelerate to speed " << speed << endl;
+            cout << "[MANUAL] Car Decelerate to speed " << speed << endl;
         }else {
             speed -= 10;
-            cout << "Car Decelerate to speed " << speed << endl;
+            cout << "[MANUAL] Car Decelerate to speed " << speed << endl;
         }
     }
 
     void apply_break() override{
         speed = 0;
-        cout << "Car Break at speed " << speed << endl;
+        cout << "[MANUAL] Car Break at speed " << speed << endl;
     }
 
 };
@@ -91,30 +106,30 @@ class Electric_Car: public Car {
     }
 
     void engine_start() override {
-        cout << "Car Engine Started!!" << endl;
+        cout << "[ELECTRIC] Car Engine Started!!" << endl;
     }
 
-    void engine_stop() {
-        cout << "Car Engine Stopped!!" << endl;
+    void engine_stop() override {
+        cout << "[ELECTRIC] Car Engine Stopped!!" << endl;
     }
 
-    void accelerate() {
+    void accelerate() override {
         speed += 15;
-        cout << "Car Accelerate at speed " << speed << endl;
+        cout << "[ELECTRIC] Car Accelerate at speed " << speed << endl;
     }
 
-    void decelerate() {
+    void decelerate() override {
         if (speed == 0) {
-            cout << "Car Decelerate to speed " << speed << endl;
+            cout << "[ELECTRIC] Car Decelerate to speed " << speed << endl;
         }else {
             speed -= 15;
-            cout << "Car Decelerate to speed " << speed << endl;
+            cout << "[ELECTRIC] Car Decelerate to speed " << speed << endl;
         }
     }
 
-    void apply_break() {
+    void apply_break() override {
         speed = 0;
-        cout << "Car Break at speed " << speed << endl;
+        cout << "[ELECTRIC] Car Break at speed " << speed << endl;
     }
 };
 
