@@ -33,7 +33,7 @@ int main() {
     rect->setValues(10, 20);
     cout << "Area of rectangle : " << rect->getArea() << "cm^2" << endl;
 
-    free(rect);
+    delete rect;
 
     return EXIT_SUCCESS;
 }
