@@ -46,7 +46,6 @@ public:
         speed = 0;
         cout << "[CAR] Break at speed " << speed << endl;
     }
-
     virtual ~Car() = default;
 };
 
@@ -90,7 +89,6 @@ public:
         speed = 0;
         cout << "[MANUAL] Car Break at speed " << speed << endl;
     }
-
 };
 
 class Electric_Car: public Car {
@@ -133,7 +131,6 @@ public:
         speed = 0;
         cout << "[ELECTRIC] Car Break at speed " << speed << endl;
     }
-
 };
 
 // Main function
