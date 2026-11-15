@@ -90,7 +90,6 @@ public:
         speed = 0;
         cout << "[MANUAL] Car Break at speed " << speed << endl;
     }
-
 };
 
 // Main function
